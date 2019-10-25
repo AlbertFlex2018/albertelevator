@@ -1,2 +1,4 @@
-#ignore the target files.
-target/
+#ignore build
+build/
+dist/
+nbproject/private/

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<System>
+    <name>DemoSystem1</name>
+    <buildingList>
+        <building>
+            <name>Building1</name>
+            <id>1</id>
+            <start>1</start>
+            <end>5</end>
+        </building>
+        <building>
+            <name>Building2</name>
+            <id>2</id>
+            <start>1</start>
+            <end>5</end>
+        </building>
+    </buildingList>
+    <elevatorList>
+        <elevator>
+            <name>Elevator1</name>
+            <buildingid>1</buildingid>
+            <elevatorid>1</elevatorid>
+            <globalid>11</globalid>
+            <start>1</start>
+            <end>4</end>
+        </elevator>
+        <elevator>
+            <name>Elevator2</name>
+            <buildingid>1</buildingid>
+            <elevatorid>2</elevatorid>
+            <globalid>12</globalid>
+            <start>1</start>
+            <end>5</end>
+        </elevator>
+        <elevator>
+            <name>Elevator3</name>
+            <buildingid>2</buildingid>
+            <elevatorid>1</elevatorid>
+            <globalid>13</globalid>
+            <start>1</start>
+            <end>3</end>
+        </elevator>
+    </elevatorList>
+    <adminList>
+        <admin>
+            <id>19980629</id>
+            <username>AlbertFlex</username>
+            <password>moeyui0624</password>
+        </admin>
+        <admin>
+            <id>19980630</id>
+            <username>Alex</username>
+            <password>moeyui0513</password>
+        </admin>
+    </adminList>
+</System>
