@@ -6,7 +6,6 @@
 package af.albertsoft.elevator.system;
 
 import af.albertsoft.elevator.admin.AdminSystem;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
