@@ -290,7 +290,6 @@ public class SystemPrototypeTest {
         String filepath = data.getSystemPath();
         XMLWriter writer = null;
         try{
-            SAXReader reader = new SAXReader();
             OutputFormat format = OutputFormat.createPrettyPrint();
             format.setEncoding("utf-8");
                 Document document = DocumentHelper.createDocument();
