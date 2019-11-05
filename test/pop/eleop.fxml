@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="af.albertsoft.ElevatorOpFXML">
+   <children>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#c4d8eb" height="312.0" layoutX="-6.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" width="412.0" />
+      <Label layoutX="135.0" layoutY="14.0" text="-ElevatorOperate-" />
+      <ChoiceBox fx:id="opChoice" layoutX="190.0" layoutY="45.0" prefHeight="30.0" prefWidth="130.0" />
+      <Label layoutX="106.0" layoutY="50.0" text="Operate" />
+      <Label layoutX="106.0" layoutY="85.0" text="Building" />
+      <ChoiceBox fx:id="buildChoice" layoutX="190.0" layoutY="80.0" prefHeight="30.0" prefWidth="130.0" />
+      <Label fx:id="StartLabel" layoutX="100.0" layoutY="200.0" text="StartFloor" />
+      <ChoiceBox fx:id="StartChoice" layoutX="190.0" layoutY="195.0" prefHeight="30.0" prefWidth="130.0" />
+      <Label fx:id="EndLabel" layoutX="103.0" layoutY="236.0" text="EndFloor" />
+      <ChoiceBox fx:id="EndChoice" layoutX="190.0" layoutY="231.0" prefHeight="30.0" prefWidth="130.0" />
+      <Button layoutX="338.0" layoutY="256.0" mnemonicParsing="false" text="OK" />
+      <Label fx:id="ElevatorLabel" layoutX="106.0" layoutY="123.0" text="Elevator" />
+      <ChoiceBox fx:id="ElevatorChoice" layoutX="190.0" layoutY="118.0" prefHeight="30.0" prefWidth="130.0" />
+      <TextField fx:id="ElevatorNameField" layoutX="190.0" layoutY="157.0" prefHeight="30.0" prefWidth="130.0" />
+      <Label fx:id="ElevatorNameLabel" layoutX="123.0" layoutY="162.0" text="Name" />
+      <Button layoutX="23.0" layoutY="256.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="58.0" text="CAN" />
+   </children>
+</AnchorPane>
