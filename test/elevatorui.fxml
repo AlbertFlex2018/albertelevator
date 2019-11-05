@@ -57,7 +57,7 @@
         <items>
             <VBox prefHeight="622.0" prefWidth="196.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="287.0" text="Building" textAlignment="CENTER" textOverrun="CLIP" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="52.0" prefWidth="222.0" text="Building" textAlignment="CENTER" textOverrun="CLIP" />
                   <TreeView fx:id="buildingTree" onEditCommit="#buildingTreeEditCommit" onEditStart="#buildingTreeEditStart" prefHeight="452.0" prefWidth="305.0" />
                   <AnchorPane prefHeight="182.0" prefWidth="289.0">
                      <children>
@@ -97,7 +97,7 @@
                               <AnchorPane fx:id="buttonPanel" prefHeight="282.0" prefWidth="395.0" />
                               <HBox prefHeight="34.0" prefWidth="395.0">
                                  <children>
-                                    <TextField fx:id="cmdLine" prefHeight="19.0" prefWidth="312.0" promptText="&gt;">
+                                    <TextField fx:id="cmdLine" prefHeight="19.0" prefWidth="312.0">
                                        <HBox.margin>
                                           <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                                        </HBox.margin>
@@ -109,12 +109,12 @@
                                  </VBox.margin>
                               </HBox>
                               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="489.0" text="-CONSOLE-" />
-                              <TextArea fx:id="consoleText" prefHeight="154.0" prefWidth="395.0" promptText="&gt;" />
+                              <TextArea fx:id="consoleText" prefHeight="154.0" prefWidth="395.0" />
                            </children>
                         </VBox>
                         <VBox prefHeight="613.0" prefWidth="365.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="47.0" prefWidth="259.0" text="User" />
+                              <Label alignment="CENTER" prefHeight="43.0" prefWidth="319.0" text="User" />
                               <TreeView fx:id="userTree" prefHeight="602.0" prefWidth="259.0" />
                            </children>
                         </VBox>

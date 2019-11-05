@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="245.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#c4d8eb" height="245.0" stroke="BLACK" strokeType="INSIDE" width="400.0" />
+      <Label layoutX="134.0" layoutY="14.0" text="-AdminOperate-" />
+      <Label layoutX="67.0" layoutY="47.0" text="AdminOperate" />
+      <ChoiceBox fx:id="operateChoice" layoutX="194.0" layoutY="42.0" prefWidth="150.0" />
+      <Label layoutX="157.0" layoutY="84.0" text="ID" />
+      <TextField fx:id="IDField" layoutX="194.0" layoutY="79.0" prefHeight="30.0" prefWidth="150.0" />
+      <Label layoutX="129.0" layoutY="119.0" text="Name" />
+      <TextField fx:id="NameField" layoutX="194.0" layoutY="114.0" prefHeight="30.0" prefWidth="150.0" />
+      <TextField fx:id="passwordField" layoutX="194.0" layoutY="150.0" prefHeight="30.0" prefWidth="150.0" />
+      <Label layoutX="104.0" layoutY="155.0" text="Password" />
+      <Button layoutX="173.0" layoutY="197.0" mnemonicParsing="false" text="OK" />
+   </children>
+</AnchorPane>
