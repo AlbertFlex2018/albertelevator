@@ -346,7 +346,7 @@ public class AllAboveSystem implements BuildingOperate,SystemOperate,ElevatorOpe
             System.out.println("Get Elevator Error:ElevatorId is invalid!");
             return null;
         }
-        return elevatorMap.remove(globalid);        
+        return elevatorMap.get(globalid);        
     }
 
     @Override
