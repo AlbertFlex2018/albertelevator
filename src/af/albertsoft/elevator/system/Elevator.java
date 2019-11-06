@@ -128,4 +128,8 @@ public class Elevator implements ElevatorStrategy{
             this.strategy.shutdown(elevator);
         }
     }
+    @Override
+    public String toString(){
+        return elevatorName;
+    }    
 }

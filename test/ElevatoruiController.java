@@ -90,8 +90,9 @@ public class ElevatoruiController implements Initializable {
         Iterator<Integer> eleiter=building.getElevatorIdMap().values().iterator();
         while(eleiter.hasNext())
         {
-            Integer inte = eleiter.next();
-            Elevator ele = AllAboveSystem.getInstance().getElevator(inte);
+            Integer inte = eleiter.next();            
+            Elevator ele = AllAboveSystem.getInstance().getControl().
+                    getSystemData().getElevatorMap().get(inte);
             TreeItem<String> eleitem = new TreeItem<>(ele.getElevatorName());                        
             item.getChildren().add(eleitem);
         }

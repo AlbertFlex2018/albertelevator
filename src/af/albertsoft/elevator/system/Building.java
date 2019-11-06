@@ -52,4 +52,9 @@ public class Building {
     public Map<Integer, Integer> getElevatorIdMap() {
         return elevatorIdMap;
     }        
+    
+    @Override
+    public String toString(){
+        return buildingName;
+    }
 }
