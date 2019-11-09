@@ -4,12 +4,22 @@
  * and open the template in the editor.
  */
 package af.albertsoft.elevator.system;
+
+import java.util.HashMap;
+import java.util.Map;
+import javafx.scene.Parent;
+import javafx.stage.Popup;
+
 /**
  *
  * @author Admin
  */
 public class AllAboveSystem{
-
+    
+    public static final Map<String,Parent> popMap=new HashMap<>();
+    public static final Popup popup=new Popup();
+    
+        
     private static int staticId;
     
     public static int createId(){
