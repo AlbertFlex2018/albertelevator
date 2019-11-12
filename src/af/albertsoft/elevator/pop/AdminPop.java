@@ -39,6 +39,8 @@ public class AdminPop implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -75,7 +77,7 @@ public class AdminPop implements Initializable {
         int id = AllAboveSystem.createId()+100000;
         Admin admin = new Admin(id,name,password);
         AllAboveSystem.getInstance().getControl().
-                getSystemData().getAdminsystem().getIdAdminMap().put(admin.id, admin);
+                getSystemData().getAdminSystem().getIdAdminMap().put(admin.id, admin);
     }
     private void handleRemove(){
         if(IDField.getText().length()<6){
@@ -85,7 +87,7 @@ public class AdminPop implements Initializable {
         
         int id = Integer.parseInt(IDField.getText());
         AllAboveSystem.getInstance().getControl().
-                getSystemData().getAdminsystem().getIdAdminMap().remove(id);
+                getSystemData().getAdminSystem().getIdAdminMap().remove(id);
     }    
     
     private void handleModify(){
@@ -103,7 +105,7 @@ public class AdminPop implements Initializable {
         
         int id = Integer.parseInt(IDField.getText());
         Admin admin = AllAboveSystem.getInstance().getControl().
-                getSystemData().getAdminsystem().getIdAdminMap().get(id);
+                getSystemData().getAdminSystem().getIdAdminMap().get(id);
         if(admin==null){
             System.out.println("Can not find this admin:"+id);
             return;

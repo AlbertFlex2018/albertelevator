@@ -6,7 +6,6 @@
 package af.albertsoft.elevator.system;
 
 import java.util.Iterator;
-import java.util.Map;
 
 /**
  *
@@ -45,8 +44,7 @@ public class ElevatorSystem implements SystemControl{
                 case SHUTDOWN:elevator.shutdown(elevator);break;
                 default:break;
             }            
-        }
-        
+        }        
     }
     
     @Override

@@ -15,6 +15,9 @@ import java.util.Map;
  */
 public class SystemData {
     
+    /**
+     * .sys.xml file to load.
+     */
     private String systemName;
     private String systemPath;
     
@@ -73,7 +76,7 @@ public class SystemData {
         return elevatorMap;
     }            
 
-    public AdminSystem getAdminsystem() {
+    public AdminSystem getAdminSystem() {
         return adminsystem;
     }
 
@@ -85,12 +88,17 @@ public class SystemData {
     public static void loadoutSystem(SystemData data){
         
     }
+    
+    public static SystemData loadfromSystem(String filepath){        
+        
+        return null;
+    }
+
     public String getSystemPath() {
         return systemPath;
     }
 
     public void setSystemPath(String systemPath) {
         this.systemPath = systemPath;
-    }
-    
+    }    
 }

@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="af.albertsoft.elevator.pop.SystemPop">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="af.albertsoft.elevator.ui.pop.SystemPopCon">
    <children>
       <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#c4d8eb" height="220.0" stroke="BLACK" strokeType="INSIDE" width="400.0" />
       <Label layoutX="138.0" layoutY="14.0" text="-SystemOperate-" />

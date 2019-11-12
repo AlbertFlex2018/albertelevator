@@ -3,19 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package af.albertsoft.elevator.ui;
 
 import af.albertsoft.elevator.system.AllAboveSystem;
 import af.albertsoft.elevator.system.Building;
 import af.albertsoft.elevator.system.Elevator;
 import af.albertsoft.elevator.system.SystemData;
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -29,49 +35,70 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author Admin
  */
-public class ElevatoruiController implements Initializable {
-
-    public static ElevatoruiController controller;
+public class ElevatorUICon implements Initializable {
     
+    public static final String CON_NAME="System_";
     @FXML
-    public TreeView<String> buildingTree;
+    private TreeView<String> buildingTree;
     @FXML
-    public Label loginMessage;
+    private Label loginMessage;
     @FXML
-    public Button loginButton;
+    private Button loginButton;
     @FXML
-    public Label runstateLabel;
+    private Label runstateLabel;
     @FXML
-    public Label elevatorIdLabel;
+    private Label elevatorIdLabel;
     @FXML
-    public Label doorStateLabel;
+    private Label doorStateLabel;
     @FXML
-    public Label buildingIdLabel;
+    private Label buildingIdLabel;
     @FXML
-    public AnchorPane buttonPanel;
+    private Label num1;
     @FXML
-    public TextField cmdLine;
+    private Label num0;
     @FXML
-    public TextArea consoleText;
+    private AnchorPane buttonPanel;
     @FXML
-    public TreeView<String> userTree;
+    private TextField cmdLine;
+    @FXML
+    private TextArea consoleText;
+    @FXML
+    private TreeView<String> userTree;
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
+    
+    private UIFaceContain contain;
+    private Elevator selectElevator;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        ElevatoruiController.controller=this;     
+        contain = UIFaceContain.getInstance();
+        contain.addUI(CON_NAME+"num1", num1);
+        contain.addUI(CON_NAME+"num0", num0);
+        contain.addUI(CON_NAME+"buildingTree", buildingTree);
+        contain.addUI(CON_NAME+"userTree",userTree);    
+        contain.addUI(CON_NAME+"cmdLine", cmdLine);
+        contain.addUI(CON_NAME+"consoleText",consoleText);
+        contain.addUI(CON_NAME+"buttonPanel",buttonPanel);
+        contain.addUI(CON_NAME+"loginButton",loginButton);
+        contain.addUI(CON_NAME+"loginMessage",loginMessage);
+        contain.addUI(CON_NAME+"runstateLabel",runstateLabel);
+        contain.addUI(CON_NAME+"elevatorIdLabel",elevatorIdLabel);
+        contain.addUI(CON_NAME+"doorStateLabel",doorStateLabel);
+        contain.addUI(CON_NAME+"buildingIdLabel",buildingIdLabel);
         
-        //init buildingTree
         initBuilding();
         
+        initUser();        
         
-        //init userTree        
-        initUser();
-        //init 
+//        initPops();should be called on the main methods.
     }        
+
     private void initBuilding()
     {
         Map<Integer,Building> buildMap=AllAboveSystem.getInstance().getControl().getSystemData().getBuildingMap();
@@ -118,17 +145,12 @@ public class ElevatoruiController implements Initializable {
         int count=start;        
         Map<String,TreeItem<String>> treeMap=new HashMap<>();
         for(int i=start;i!=end+1;++i){
-            TreeItem<String> item = new TreeItem<String>("F"+i);
+            TreeItem<String> item = new TreeItem<>("F"+i);
             treeMap.put(""+i,item);            
             buildroot.getChildren().add(item);
         }
         Map<Integer,Elevator> elemap=AllAboveSystem.getInstance().getControl().getSystemData().getElevatorMap();
-        SystemData data=AllAboveSystem.getInstance().getControl().getSystemData();
         System.out.println("size of eles:"+elemap.size());
-//        while(eleeiter.hasNext()){
-//            Elevator el2 = eleeiter.next();
-//            System.out.println("elevator:"+el2.getElevatorName()+" id:"+el2.globalId);
-//        }
         Iterator<Integer> eleiter=building.getElevatorIdMap().values().iterator();
         while(eleiter.hasNext()){            
                 Integer id = eleiter.next();
@@ -137,29 +159,33 @@ public class ElevatoruiController implements Initializable {
                 if(ele==null)continue;
                 if(ele.getCurrentFloor()==count)
                 {
-                    treeMap.get(""+ele.getStartFloor()).getChildren().add(new TreeItem<String>(ele.getElevatorName()));
+                    treeMap.get(""+ele.getStartFloor()).getChildren().add(new TreeItem<>(ele.getElevatorName()));
                 }
         }            
     }
-
+    
     @FXML
     private void newSystem(ActionEvent event){
+        
     }
 
     @FXML
-    private void openSystem(ActionEvent event) {
+    private void openSystem(ActionEvent event){
+        
     }
 
     @FXML
-    private void saveSystem(ActionEvent event) {
+    private void saveSystem(ActionEvent event){
+        
     }
 
     @FXML
-    private void addElevator(ActionEvent event) {
+    private void addElevator(ActionEvent event){
+        
     }
 
     @FXML
-    private void addBuilding(ActionEvent event) {
+    private void addBuilding(ActionEvent event){
     }
 
     @FXML
@@ -188,6 +214,7 @@ public class ElevatoruiController implements Initializable {
 
     @FXML
     private void help(ActionEvent event) {
+        
     }
 
     @FXML
@@ -202,20 +229,44 @@ public class ElevatoruiController implements Initializable {
     private void aboutSite(ActionEvent event) {
     }
 
-
-    @FXML
-    private void loginAction(ActionEvent event) {
-    }
-
-    @FXML
-    private void runComand(ActionEvent event) {
-    }
-
     @FXML
     private void buildingTreeEditStart(TreeView.EditEvent<String> event) {
     }
 
     @FXML
     private void buildingTreeEditCommit(TreeView.EditEvent<String> event) {
-    }    
+    }
+
+    @FXML
+    private void loginAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void openDoor(ActionEvent event) {
+    }
+
+    @FXML
+    private void closeDoor(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void runComand(ActionEvent event) {
+        
+    }
+
+    private void initPops() {
+        String[] names=new String[]{
+          "admop","buildop","eleop","sysop",
+        };
+        UIFaceContain contain = UIFaceContain.getInstance();
+        try {
+            for(String s: names){
+                Parent root = FXMLLoader.load(getClass().getResource("pop/"+s+".fxml"));
+                contain.addUI("Pop_"+s, root);
+            }
+        }catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

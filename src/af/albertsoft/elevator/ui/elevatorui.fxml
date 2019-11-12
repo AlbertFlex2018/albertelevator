@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
@@ -7,7 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="955.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ElevatoruiController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="955.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="af.albertsoft.elevator.ui.ElevatorUICon">
    <children>
       <MenuBar>
         <menus>
@@ -75,22 +76,22 @@
                            <children>
                               <AnchorPane prefHeight="135.0" prefWidth="395.0">
                                  <children>
-                                    <ImageView fitHeight="97.0" fitWidth="39.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@player1.png" />
-                                       </image>
-                                    </ImageView>
-                                    <ImageView fitHeight="112.0" fitWidth="39.0" layoutX="74.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@player1.png" />
-                                       </image>
-                                    </ImageView>
                                     <Label fx:id="runstateLabel" layoutX="141.0" layoutY="36.0" text="RunState" />
                                     <Label fx:id="elevatorIdLabel" layoutX="218.0" layoutY="36.0" text="elevatorId" />
                                     <Label fx:id="doorStateLabel" layoutX="137.0" layoutY="83.0" text="doorState" />
                                     <Label fx:id="buildingIdLabel" layoutX="229.0" layoutY="83.0" text="buildId" />
-                                    <Button layoutX="312.0" layoutY="31.0" mnemonicParsing="false" text="Open" />
-                                    <Button layoutX="312.0" layoutY="78.0" mnemonicParsing="false" text="Close" />
+                                    <Button layoutX="312.0" layoutY="31.0" mnemonicParsing="false" onAction="#openDoor" text="Open" />
+                                    <Button layoutX="312.0" layoutY="78.0" mnemonicParsing="false" onAction="#closeDoor" text="Close" />
+                                    <Label fx:id="num1" layoutX="14.0" layoutY="33.0" text="0">
+                                       <font>
+                                          <Font size="50.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="num0" layoutX="48.0" layoutY="33.0" text="0">
+                                       <font>
+                                          <Font size="50.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </AnchorPane>
                               <Separator prefWidth="200.0" />
@@ -109,7 +110,7 @@
                                  </VBox.margin>
                               </HBox>
                               <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="489.0" text="-CONSOLE-" />
-                              <TextArea fx:id="consoleText" prefHeight="154.0" prefWidth="395.0" />
+                              <TextArea fx:id="consoleText" prefHeight="132.0" prefWidth="394.0" />
                            </children>
                         </VBox>
                         <VBox prefHeight="613.0" prefWidth="365.0">

@@ -1,9 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package af.albertsoft.elevator.system;
+
 import af.albertsoft.elevator.admin.Admin;
 import af.albertsoft.elevator.admin.AdminSystem;
-import af.albertsoft.elevator.system.Building;
-import af.albertsoft.elevator.system.Elevator;
-import af.albertsoft.elevator.system.ElevatorState;
-import af.albertsoft.elevator.system.SystemData;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -12,33 +15,19 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.dom4j.Document;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
  * @author Admin
  */
-public class SystemPrototypeTest {
-    
-    public static void main(String[] args){
-        SystemData data = getData("systemconfig/system1.sys.xml");
-        data.setSystemPath("systemconfig/system2.sys.xml");
-        writeData(data);
-        Building building = data.getBuildingMap().get(1);
-        building.setBuildingName("Changed BuildingName!!!2");
-        modifyData(data);
-    }   
+public class SystemFileHelper {
+    public static final ElevatorStrategy defaultStrategy=new DefaultStrategy();
     public static void modifyData(SystemData data){
         //写入并且更新系统数据到文件中，如果楼层或者电梯或者管理员不存在，则创建
         File file = new File(data.getSystemPath());
@@ -185,7 +174,7 @@ public class SystemPrototypeTest {
             
             //修改管理员
             Element adminRoot=root.addElement("adminList");
-            Iterator<Admin> adminiter=data.getAdminsystem().getIdAdminMap().values().iterator();
+            Iterator<Admin> adminiter=data.getAdminSystem().getIdAdminMap().values().iterator();
             while(adminiter.hasNext())
             {
                 Admin admin = adminiter.next();
@@ -217,7 +206,7 @@ public class SystemPrototypeTest {
             
             //删除多余管理员
             Iterator<Element> admineleiter=adminRoot.elementIterator();
-            Map<Integer,Admin> adminMap=data.getAdminsystem().getIdAdminMap();
+            Map<Integer,Admin> adminMap=data.getAdminSystem().getIdAdminMap();
             List<Element> needremove3 = new ArrayList<>();
             while(admineleiter.hasNext())
             {
@@ -334,7 +323,7 @@ public class SystemPrototypeTest {
                 }
 
                 Element adminlist=root.addElement("adminList");
-                Iterator<Admin> adminiter=data.getAdminsystem().getIdAdminMap().values().iterator();
+                Iterator<Admin> adminiter=data.getAdminSystem().getIdAdminMap().values().iterator();
                 while(adminiter.hasNext()){
                     Admin admin = adminiter.next();
                     Element adminv = adminlist.addElement("admin");
@@ -402,7 +391,8 @@ public class SystemPrototypeTest {
                 //(String elevatorName, int elevatorId, int buildingId,int globalId, int startFloor, int endFloor, 
                 //int currentFloor, boolean[] upClicks, boolean[] downClicks, boolean[] DestClicks,ElevatorState runState)
                 Elevator elevator= new Elevator(nname,elevatorid,buildingid,globalid,start,end,
-                    start,new boolean[end+1],new boolean[end+1],new boolean[end+1],ElevatorState.UNSETUP);
+                    start,new boolean[end+1],new boolean[end+1],new boolean[end+1],ElevatorState.UNSETUP); 
+                elevator.setStrategy(defaultStrategy);
                 Building building=buildMap.get(buildingid);
                 if(building==null){
                     System.out.println("Building is not found! buildingId for elevator is wrong.");
@@ -449,7 +439,7 @@ public class SystemPrototypeTest {
         }
 
         System.out.println("ADMIN LIST...");
-        Iterator<Admin> adminiter=data.getAdminsystem().getIdAdminMap().values().iterator();
+        Iterator<Admin> adminiter=data.getAdminSystem().getIdAdminMap().values().iterator();
         while(adminiter.hasNext()){
             Admin admin = adminiter.next();
             printAdmin(admin);
@@ -477,5 +467,5 @@ public class SystemPrototypeTest {
         System.out.println("id:"+admin.id);
         System.out.println("password:"+admin.getPassword());
         System.out.println("");        
-    }
+    }    
 }
