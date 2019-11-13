@@ -8,6 +8,7 @@ package af.albertsoft.elevator.ui;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.scene.Node;
+import javafx.stage.Popup;
 
 /**
  *
@@ -23,8 +24,10 @@ public class UIFaceContain {
     }
     
     private final Map<String,Node> faceMap;
+    public final Popup popup;
     private UIFaceContain() {
         faceMap=new HashMap<>();
+        popup=new Popup();
     }    
     public Map<String, Node> getFaceMap() {
         return faceMap;
