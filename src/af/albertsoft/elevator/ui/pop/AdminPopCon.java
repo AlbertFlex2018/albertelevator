@@ -9,6 +9,7 @@ import af.albertsoft.elevator.admin.Admin;
 import af.albertsoft.elevator.admin.LoginAndOut;
 import af.albertsoft.elevator.system.AllAboveSystem;
 import af.albertsoft.elevator.ui.UIFaceContain;
+import static af.albertsoft.elevator.ui.pop.BuildingPopCon.CON_NAME;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -81,7 +82,7 @@ public class AdminPopCon implements Initializable {
             default:
                 result=false;break;
         }
-        UIFaceContain.getInstance().popup.hide();
+        UIFaceContain.getInstance().popupMap.get(CON_NAME).hide();
     }    
     
     private boolean handleAdd(){

@@ -6,7 +6,7 @@
 package af.albertsoft.elevator.ui.pop;
 
 import af.albertsoft.elevator.ui.UIFaceContain;
-import static af.albertsoft.elevator.ui.pop.ElevatorPopCon.CON_NAME;
+import static af.albertsoft.elevator.ui.pop.BuildingPopCon.CON_NAME;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -56,6 +56,30 @@ public class SystemPopCon implements Initializable {
 
     @FXML
     private void Submit(ActionEvent event) {
+        boolean result;
+        switch(operateChoice.getValue()){
+            case OPERATE_NEW:
+                result=handleNew();break;
+            case OPERATE_SAVE:
+                result=handleSave();break;
+            case OPERATE_OPEN:
+                result=handleOpen();break;
+            default:
+                result=false;break;
+        }
+        UIFaceContain.getInstance().popupMap.get(CON_NAME).hide();
+    }
+
+    private boolean handleOpen() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private boolean handleSave() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private boolean handleNew() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -24,10 +24,10 @@ public class UIFaceContain {
     }
     
     private final Map<String,Node> faceMap;
-    public final Popup popup;
+    public final Map<String,Popup> popupMap;
     private UIFaceContain() {
         faceMap=new HashMap<>();
-        popup=new Popup();
+        popupMap=new HashMap<>();
     }    
     public Map<String, Node> getFaceMap() {
         return faceMap;
