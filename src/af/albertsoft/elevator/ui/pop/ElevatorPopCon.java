@@ -8,7 +8,6 @@ package af.albertsoft.elevator.ui.pop;
 import af.albertsoft.elevator.system.Building;
 import af.albertsoft.elevator.system.Elevator;
 import af.albertsoft.elevator.ui.UIFaceContain;
-import static af.albertsoft.elevator.ui.pop.BuildingPopCon.CON_NAME;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Popup;
 
 /**
  * FXML Controller class
@@ -59,21 +59,23 @@ public class ElevatorPopCon implements Initializable {
         operateChoice.getItems().add(OPERATE_ADD);
         operateChoice.getItems().add(OPERATE_MODIFY);
         operateChoice.getItems().add(OPERATE_REMOVE);
+       contain.popupMap.put(CON_NAME,new Popup());
     }    
     @FXML
     private void Submit(ActionEvent event) {
-        boolean result;
-        switch(operateChoice.getValue()){
-            case OPERATE_ADD:
-                result=handleAdd();break;
-            case OPERATE_MODIFY:
-                result=handleModify();break;
-            case OPERATE_REMOVE:
-                result=handleRemove();break;
-            default:
-                result=false;break;
-        }
-        UIFaceContain.getInstance().popupMap.get(CON_NAME).hide();
+        boolean result=true;
+//        switch(operateChoice.getValue()){
+//            case OPERATE_ADD:
+//                result=handleAdd();break;
+//            case OPERATE_MODIFY:
+//                result=handleModify();break;
+//            case OPERATE_REMOVE:
+//                result=handleRemove();break;
+//            default:
+//                result=false;break;
+//        }
+        if(result)
+            UIFaceContain.getInstance().popupMap.get(CON_NAME).hide();
     }    
 
     private boolean handleAdd() {

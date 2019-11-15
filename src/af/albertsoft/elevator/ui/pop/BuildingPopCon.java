@@ -5,16 +5,18 @@
  */
 package af.albertsoft.elevator.ui.pop;
 
+import af.albertsoft.elevator.system.AllAboveSystem;
 import af.albertsoft.elevator.system.Building;
 import af.albertsoft.elevator.ui.UIFaceContain;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Popup;
 
 /**
  * FXML Controller class
@@ -55,26 +57,47 @@ public class BuildingPopCon implements Initializable {
        operateChoice.getItems().add(OPERATE_ADD);
        operateChoice.getItems().add(OPERATE_REMOVE);
        operateChoice.getItems().add(OPERATE_MODIFY);
+       contain.popupMap.put(CON_NAME,new Popup());
     }    
 
     @FXML
     private void Submit(ActionEvent event) {
-        boolean result;
-        switch(operateChoice.getValue()){
-            case OPERATE_ADD:
-                result=handleAdd();break;
-            case OPERATE_MODIFY:
-                result=handleModify();break;
-            case OPERATE_REMOVE:
-                result=handleRemove();break;
-            default:
-                result=false;break;
-        }
-        UIFaceContain.getInstance().popupMap.get(CON_NAME).hide();
+        boolean result=true;
+//        switch(operateChoice.getValue()){
+//            case OPERATE_ADD:
+//                result=handleAdd();break;
+//            case OPERATE_MODIFY:
+//                result=handleModify();break;
+//            case OPERATE_REMOVE:
+//                result=handleRemove();break;
+//            default:
+//                result=false;break;
+//        }
+        if(result)
+            UIFaceContain.getInstance().popupMap.get(CON_NAME).hide();
     }
 
-    private boolean handleAdd() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private boolean handleAdd(){
+/**
+ *     private TextField NameField;
+    @FXML
+    private TextField StartField;
+    @FXML
+    private TextField EndField;
+ */        
+        String name = NameField.getText();
+        String startF = StartField.getText();
+        String endF = EndField.getText();
+        try{
+            int startf = Integer.parseInt(startF);
+            int endf = Integer.parseInt(endF);
+            Building build = new Building(name,AllAboveSystem.createId(),startf,endf,new HashMap<>());
+            AllAboveSystem.getInstance().getControl().getSystemData().getBuildingMap().put(build.buildingId,build);
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     private boolean handleModify() {
@@ -83,6 +106,5 @@ public class BuildingPopCon implements Initializable {
 
     private boolean handleRemove() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    }    
 }

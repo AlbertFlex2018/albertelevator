@@ -25,6 +25,7 @@ public class FXMLLoaderApp extends Application{
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/af/albertsoft/elevator/ui/elevatorui.fxml"));
+        UIFaceContain.getInstance().addUI("root", root);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -50,7 +51,6 @@ public class FXMLLoaderApp extends Application{
             }
         }catch (IOException ex) {
             ex.printStackTrace();
-        }
-        
+        }        
     }
 }

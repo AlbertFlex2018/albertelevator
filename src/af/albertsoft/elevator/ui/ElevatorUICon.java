@@ -9,6 +9,8 @@ import af.albertsoft.elevator.system.AllAboveSystem;
 import af.albertsoft.elevator.system.Building;
 import af.albertsoft.elevator.system.Elevator;
 import af.albertsoft.elevator.system.SystemData;
+import af.albertsoft.elevator.ui.pop.ElevatorPopCon;
+import af.albertsoft.elevator.ui.pop.SystemPopCon;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -21,22 +23,24 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Popup;
 
 /**
  * FXML Controller class
  *
  * @author Admin
  */
-public class ElevatorUICon implements Initializable {
-    
+public class ElevatorUICon implements Initializable {    
     public static final String CON_NAME="System_";
     @FXML
     private TreeView<String> buildingTree;
@@ -166,22 +170,43 @@ public class ElevatorUICon implements Initializable {
     
     @FXML
     private void newSystem(ActionEvent event){
-        
+        operateSystem(SystemPopCon.OPERATE_NEW);
     }
 
     @FXML
     private void openSystem(ActionEvent event){
-        
+        operateSystem(SystemPopCon.OPERATE_OPEN);
+    }
+    private void operateSystem(String operate){
+        Parent parent = (Parent)UIFaceContain.getInstance().getUI("Pop_sysop");
+        ChoiceBox operateChoice = (ChoiceBox) UIFaceContain.getInstance().getUI(SystemPopCon.CON_NAME+"operateChoice");
+        operateChoice.setValue(operate);
+        operateChoice.disableProperty().setValue(Boolean.TRUE);
+        Popup pop=UIFaceContain.getInstance().popupMap.get(SystemPopCon.CON_NAME);
+        pop.getContent().clear();
+        pop.getContent().add(parent);
+        Node root = UIFaceContain.getInstance().getUI("root");                
+        pop.show(root,100,100);                
     }
 
     @FXML
     private void saveSystem(ActionEvent event){
-        
+        operateSystem(SystemPopCon.OPERATE_SAVE);
     }
 
     @FXML
     private void addElevator(ActionEvent event){
         
+    }
+    private void operateElevator(String operate){
+        Parent parent = (Parent)UIFaceContain.getInstance().getUI("Pop_eleop");
+        ChoiceBox operateChoice = (ChoiceBox) UIFaceContain.getInstance().getUI(ElevatorPopCon.CON_NAME+"operateChoice");
+        operateChoice.setValue(operate);
+        Popup pop=UIFaceContain.getInstance().popupMap.get(ElevatorPopCon.CON_NAME);
+        pop.getContent().clear();
+        pop.getContent().add(parent);
+        Node root = UIFaceContain.getInstance().getUI("root");                
+        pop.show(root,100,100);                        
     }
 
     @FXML

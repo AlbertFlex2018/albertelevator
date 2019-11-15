@@ -10,7 +10,7 @@ package af.albertsoft.elevator.system;
  * @author Admin
  */
 public class AllAboveSystem{            
-    private static int staticId;
+    private static int staticId=1000000;
     
     public static int createId(){
         return ++staticId;

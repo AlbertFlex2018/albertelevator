@@ -20,7 +20,7 @@ public class Building {
     
     private final Map<Integer,Integer> elevatorIdMap;
 
-    public Building(String buildingName, int buildingId, int startFloor, int endFloor,
+    public Building(String buildingName,int buildingId, int startFloor, int endFloor,
             Map<Integer, Integer> elevatorIdMap) {
         this.buildingName = buildingName;
         this.buildingId = buildingId;
