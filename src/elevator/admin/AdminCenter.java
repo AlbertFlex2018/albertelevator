@@ -4,6 +4,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class AdminCenter {
+    private static AdminCenter center=null;
+    public static AdminCenter getInstance(){
+        if(center==null)
+            center=new AdminCenter();
+        
+        return center;
+    }
+    
     private long s_id=100000;
     
     private final List<Admin> registedAdmins;
@@ -32,7 +40,7 @@ public class AdminCenter {
         }
     }    
     //登出
-    public void logOut(long userid){
+    public void logOut(long userid,String password){
         Admin admin = getRegistedAdminByUserId(userid);
         if(admin==null){
             System.err.println("id not found.["+userid+"]");
@@ -40,8 +48,13 @@ public class AdminCenter {
              if(!logedAdmins.contains(admin)){
                 System.err.println("does not has logIned.please do logIn");
              }else{
-                logedAdmins.remove(admin);
-                System.out.println("logOut successfully.["+userid+"]");
+                 String ps=admin.getPassword();
+                 if(ps.equals(password)){
+                    logedAdmins.remove(admin);
+                    System.out.println("logOut successfully.["+userid+"]");                     
+                 }else{
+                     System.err.println("password error!");
+                 }
              }            
         }
     }
@@ -57,10 +70,16 @@ public class AdminCenter {
         return s_id;
     }
     //注销
-    public void registOut(long userid){
+    public void registOut(long userid,String password){
         Admin admin = getRegistedAdminByUserId(userid);
         if(admin==null){
             System.err.println("userid not found.["+userid+"]");
+            return;
+        }
+        String ps=admin.getPassword();
+        if(!ps.equals(password)){
+            System.err.println("password input error");
+            return;
         }
         if(!registedAdmins.remove(admin)){
             System.out.println("resgitOut failed.["+userid+"]");            
@@ -69,7 +88,7 @@ public class AdminCenter {
     }
     public Admin getRegistedAdminByUserId(long userid){
         for(Admin admin:registedAdmins){
-            if(admin.id==userid)
+            if(admin.getId()==userid)
                 return admin;
         }
         return null;

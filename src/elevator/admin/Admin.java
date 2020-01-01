@@ -2,7 +2,7 @@ package elevator.admin;
 
 public class Admin {
     
-    public final long id;
+    private final long id;
     private AdminGrunt grunt;
     private String password;
 
@@ -18,6 +18,10 @@ public class Admin {
 
     public void setGrunt(AdminGrunt grunt) {
         this.grunt = grunt;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getPassword() {
