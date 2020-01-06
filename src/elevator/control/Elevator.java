@@ -14,6 +14,8 @@ public class Elevator {
     private final int startFloor,endFloor;//起始楼层，结束楼层
     private int currentFloor;//目前的楼层
     private final boolean[] upClicks,downClicks,destClicks;
+    private ElevatorState state;
+    private ElevatorState preState;
 
     public Elevator(long id, long buildid, String name, int startFloor, int endFloor, int currentFloor) {
         this.id = id;
@@ -25,9 +27,10 @@ public class Elevator {
         upClicks=new boolean[endFloor-startFloor+1];
         downClicks=new boolean[endFloor-startFloor+1];
         destClicks=new boolean[endFloor-startFloor+1];
+        preState=state=ElevatorState.UNSETUP;
     }
     
-    public long getId() {
+    public long getId(){
         return id;
     }
 
@@ -70,4 +73,20 @@ public class Elevator {
     public void setCurrentFloor(int currentFloor) {
         this.currentFloor = currentFloor;
     }  
+    public void start(){
+        this.state=ElevatorState.IDLE;
+    }
+
+    public ElevatorState getState() {
+        return state;
+    }
+
+    public void setState(ElevatorState state) {
+        preState=this.state;
+        this.state = state;
+    }
+
+    public ElevatorState getPreState() {
+        return preState;
+    }    
 }

@@ -24,7 +24,7 @@ public class BuildingCenterTest {
             String word=scan.nextLine();
             if(word.startsWith("addbuilding")){
                 addBuilding(word,center);
-            }else if(word.startsWith("addelevetor")){
+            }else if(word.startsWith("addelevator")){
                 addElevator(word,center);
             }else if(word.equals("showbuilds")){
                 showBuildingsOnCenter(center);
@@ -68,6 +68,8 @@ public class BuildingCenterTest {
         String name=cmd[2];
         int start=Integer.parseInt(cmd[3]);
         int end=Integer.parseInt(cmd[4]);
+        
+        System.out.println("add elevator:"+name+" - "+start+" - "+end);
         build.addElevator(name, start, end);
     }
     //showelevators buildid
@@ -82,10 +84,10 @@ public class BuildingCenterTest {
         List<Elevator> elist=build.getElevatorList();
         System.out.println("== elevators on "+build.getName()+" ==");
         System.out.println("id \t buildid \t name \t start \t end \t current");
-        for(Elevator ele : elist){
+        elist.forEach((ele) -> {
             System.out.println(ele.getId()+"\t"+ele.getBuildid()+"\t"+
                     ele.getName()+"\t"+ele.getStartFloor()+"\t"+ele.getEndFloor()+"\t"+ele.getCurrentFloor());
-        }
+        });
     }
     private static void showBuildingsOnCenter(BuildingCenter center){
         List<Building> blist=center.getBuildList();

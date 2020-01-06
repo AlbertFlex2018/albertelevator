@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configs>
+    <AdminCenter>
+        <RegistedAdmins>
+            <Admin id="10086" password="moeyui0624" grunt="CREATOR"/>
+            <Admin id="10010" password="moeyui0513" grunt="GENERAL"/>
+        </RegistedAdmins>
+        <LoginedAdmins>
+            <Admin id="10086"/>
+        </LoginedAdmins>
+    </AdminCenter>
+    <BuildingCenter>
+        <Building id="1001" name="B1" last="1" top="20">
+            <Elevator id="1001" name="E1" start="2" end="10"/>
+            <Elevator id="1002" name="E2" start="2" end="10"/>
+            <Elevator id="1003" name="E3" start="2" end="10"/>
+        </Building>
+        <Building id="1002" name="B2" last="1" top="20">
+            <Elevator id="1001" name="E1" start="2" end="10"/>
+            <Elevator id="1002" name="E2" start="3" end="10"/>
+            <Elevator id="1003" name="E3" start="4" end="10"/>
+        </Building>
+        <Building id="1003" name="B3" last="1" top="20">
+            <Elevator id="1001" name="E1" start="1" end="10"/>
+            <Elevator id="1002" name="E2" start="7" end="17"/>
+        </Building>
+    </BuildingCenter>
+</Configs>

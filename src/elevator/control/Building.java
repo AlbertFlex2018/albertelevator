@@ -104,5 +104,13 @@ public class Building{
     public int getTopLevel() {
         return topLevel;
     }
+
+    public long getEid() {
+        return eid;
+    }
+
+    public void setEid(long eid) {
+        this.eid = eid;
+    }
     
 }

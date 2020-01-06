@@ -10,7 +10,7 @@ public class BuildingCenter {
             center=new BuildingCenter();
         return center;
     }
-    private long bid;
+    private long bid=1000;
     private List<Building> buildList;
     private BuildingCenter(){
         bid=1000;
@@ -54,8 +54,15 @@ public class BuildingCenter {
         return null;
     }
 
+    public long getBid() {
+        return bid;
+    }
+
+    public void setBid(long bid) {
+        this.bid = bid;
+    }
+
     public List<Building> getBuildList() {
         return buildList;
-    }
-    
+    }    
 }
