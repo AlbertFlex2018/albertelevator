@@ -73,28 +73,38 @@ public class RunStrategy implements ElevatorRunStrategy{
         }
         if(de!=-100)
             nowdest=de;
-        
-        if(cu!=nowdest){
-            boolean open=false;
-            open=dest[cu]||up[cu];
-            if(open){
-                elevator.setState(ElevatorState.OPENDOOR);
-                try{
-                    System.out.println("open door...");
-                    Thread.sleep(300);
-                    System.out.println("open door end...");
-                }catch(Exception ex){                    
-                }
-                elevator.setState(ElevatorState.CLOSEDOOR);
-                try{
-                    System.out.println("close door ...");
-                    Thread.sleep(300);
-                    System.out.println("close door end...");
-                }catch(Exception ex){                    
-                }
-                elevator.setState(ElevatorState.MOVEUP);
-                elevator.setCurrentFloor(elevator.getCurrentFloor()+1);                
+                
+        boolean open = false;
+        open = dest[cu] || up[cu];
+        if (open) {
+            elevator.setState(ElevatorState.OPENDOOR);
+            try {
+                System.out.println("open door...");
+                Thread.sleep(300);
+                System.out.println("open door end...");
+            } catch (Exception ex) {
             }
+            elevator.setState(ElevatorState.CLOSEDOOR);
+            try {
+                System.out.println("close door ...");
+                Thread.sleep(300);
+                System.out.println("close door end...");
+            } catch (Exception ex) {
+            }
+        }
+        if (nowdest == cu){
+            boolean[] down = elevator.getDownClicks();
+            if (down[cu]) {
+                elevator.setState(ElevatorState.MOVEDOWN);
+                elevator.setCurrentFloor(elevator.getCurrentFloor() - 1);
+            } else if (up[cu]) {
+                elevator.setState(ElevatorState.MOVEUP);
+                elevator.setCurrentFloor(elevator.getCurrentFloor() + 1);
+            }
+            else elevator.setState(ElevatorState.IDLE);
+        } else {
+            elevator.setState(ElevatorState.MOVEUP);
+            elevator.setCurrentFloor(elevator.getCurrentFloor() + 1);
         }
     }
     private void handleDown(Elevator elevator){
@@ -106,6 +116,7 @@ public class RunStrategy implements ElevatorRunStrategy{
         int cu=elevator.getCurrentFloor();
         boolean[] dest=elevator.getDestClicks();
         boolean[] down=elevator.getUpClicks();
+        boolean[] up=elevator.getUpClicks();
         int de=-100;
         for(int i=cu+1;i!=elevator.getDownClicks().length;++i){
             if(dest[i]||down[i]){
@@ -115,27 +126,36 @@ public class RunStrategy implements ElevatorRunStrategy{
         if(de!=-100)
             nowdest=de;
         
-        if(cu!=nowdest){
-            boolean open=false;
-            open=dest[cu]||down[cu];
-            if(open){
-                elevator.setState(ElevatorState.OPENDOOR);
-                try{
-                    System.out.println("open door...");
-                    Thread.sleep(300);
-                    System.out.println("open door end...");
-                }catch(Exception ex){                    
-                }
-                elevator.setState(ElevatorState.CLOSEDOOR);
-                try{
-                    System.out.println("close door ...");
-                    Thread.sleep(300);
-                    System.out.println("close door end...");
-                }catch(Exception ex){                    
-                }
-                elevator.setState(ElevatorState.MOVEDOWN);
-                elevator.setCurrentFloor(elevator.getCurrentFloor()-1);                
+        boolean open = false;
+        open = dest[cu] || down[cu];
+        if (open) {
+            elevator.setState(ElevatorState.OPENDOOR);
+            try {
+                System.out.println("open door...");
+                Thread.sleep(300);
+                System.out.println("open door end...");
+            } catch (Exception ex) {
             }
+            elevator.setState(ElevatorState.CLOSEDOOR);
+            try {
+                System.out.println("close door ...");
+                Thread.sleep(300);
+                System.out.println("close door end...");
+            } catch (Exception ex) {
+            }
+        }
+        if (nowdest == cu) {
+            if (down[cu]) {
+                elevator.setState(ElevatorState.MOVEDOWN);
+                elevator.setCurrentFloor(elevator.getCurrentFloor() - 1);
+            } else if (up[cu]) {
+                elevator.setState(ElevatorState.MOVEUP);
+                elevator.setCurrentFloor(elevator.getCurrentFloor() + 1);
+            }
+            else elevator.setState(ElevatorState.IDLE);
+        } else {
+            elevator.setState(ElevatorState.MOVEDOWN);
+            elevator.setCurrentFloor(elevator.getCurrentFloor() - 1);
         }
     }
 }
