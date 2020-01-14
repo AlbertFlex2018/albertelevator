@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <SplitPane dividerPositions="0.2794486215538847" prefHeight="575.0" prefWidth="800.0">
+        <items>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <Label alignment="CENTER" prefHeight="20.0" prefWidth="235.0" style="-fx-background-color: #1111; -fx-background-radius: 10px;" text="BuildSystem">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <ScrollPane prefHeight="426.0" prefWidth="209.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                     <content>
+                        <TreeView prefHeight="424.0" prefWidth="208.0" />
+                     </content>
+                  </ScrollPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label alignment="CENTER" layoutX="29.0" layoutY="39.0" prefHeight="20.0" prefWidth="151.0" style="-fx-background-color: #1111; -fx-background-radius: 20;" text="LoginInfo">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="100.0" layoutY="93.0" mnemonicParsing="false" text="LoginButton" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+            <SplitPane dividerPositions="0.647985989492119" prefHeight="160.0" prefWidth="200.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="289.0" style="-fx-background-color: #1111; -fx-background-radius: 10px;" text="BuildSystem">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <ScrollPane prefHeight="401.0" prefWidth="235.0">
+                           <content>
+                              <TreeView prefHeight="424.0" prefWidth="274.0" />
+                           </content>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </ScrollPane>
+                        <AnchorPane prefHeight="163.0" prefWidth="235.0">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <children>
+                              <Button layoutX="59.0" layoutY="14.0" mnemonicParsing="false" text="Button" />
+                              <Button layoutX="59.0" layoutY="56.0" mnemonicParsing="false" text="Button" />
+                              <Button layoutX="59.0" layoutY="98.0" mnemonicParsing="false" text="Button" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+              </items>
+            </SplitPane>
+        </items>
+      </SplitPane>
+   </children>
+</VBox>
