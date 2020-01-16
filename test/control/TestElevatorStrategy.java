@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class TestElevatorStrategy{
     public static void main(String[] args) {
-        Elevator elevator=new Elevator(1,1,"E1",1,20,1);
+        Elevator elevator=new Elevator(1,1,"E1",1,6,1);
         elevator.start();
         Scanner scan=new Scanner(System.in);
         ElevatorRunStrategy run=new RunStrategy();
@@ -24,6 +24,28 @@ public class TestElevatorStrategy{
                 handleWord(word,elevator,run);
             }
             System.out.println(elevator.getState().toString()+" - "+elevator.getCurrentFloor());
+            boolean[] up=elevator.getUpClicks();
+            boolean[] down=elevator.getDownClicks();
+            boolean[] dest=elevator.getDestClicks();
+            System.out.print("[name]:\t");
+            for(int i=0;i!=up.length;++i)
+                System.out.print(i+"\t");
+            System.out.println("");
+            System.out.print("[up]:\t");
+            for(boolean u: up){
+                System.out.print(u+"\t");
+            }
+            System.out.println("");
+            System.out.print("[down]:\t");
+            for(boolean u: down){
+                System.out.print(u+"\t");
+            }
+            System.out.println("");
+            System.out.print("[dest]:\t");
+            for(boolean u: dest){
+                System.out.print(u+"\t");
+            }
+            System.out.println("");
         }
         
     }
@@ -48,4 +70,5 @@ public class TestElevatorStrategy{
             ele.getDestClicks()[floor]=true;
         }else;
     }
+
 }

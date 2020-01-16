@@ -32,27 +32,30 @@ public class RunStrategy implements ElevatorRunStrategy{
         //如果在下层的按钮有按下，则设置目标为该最低的楼层，设置目标状态为该楼层按钮的方向，并设置运行状态为down
         //如果在上层的按钮有按下，则设置目标为该最高的楼层，设置目标状态，并设置运行状态为up
         boolean[] up=elevator.getUpClicks();
-        boolean[] down=elevator.getDestClicks();
+        boolean[] down=elevator.getDownClicks();
+        boolean[] dest=elevator.getDestClicks();
         
         int de=-100;
         for(int i=0;i!=up.length;++i){
-            if(up[i]){
-                de=i;
-                break;
-            }
-            if(down[i]){
+            if(up[i]||down[i]||dest[i]){
                 de=i;
                 break;
             }
         }
         if(de!=-100){
             nowdest=de;
-            if(nowdest>elevator.getCurrentFloor()){
+            if(nowdest>elevator.getCurrentFloor()){                
                 elevator.setState(ElevatorState.MOVEUP);                
                 elevator.setCurrentFloor(elevator.getCurrentFloor()+1);
             }else if(nowdest<elevator.getCurrentFloor()){
                 elevator.setState(ElevatorState.MOVEDOWN);                                
                 elevator.setCurrentFloor(elevator.getCurrentFloor()-1);
+            }else{
+                if(down[nowdest]){
+                    elevator.setState(ElevatorState.MOVEUP);                
+                }else if(up[nowdest]){
+                    elevator.setState(ElevatorState.MOVEDOWN);                                
+                }
             }            
         }        
     }
@@ -75,31 +78,19 @@ public class RunStrategy implements ElevatorRunStrategy{
             nowdest=de;
                 
         boolean open = false;
-        open = dest[cu] || up[cu];
+        open = dest[cu] || up[cu]||nowdest==cu;
         if (open) {
-            elevator.setState(ElevatorState.OPENDOOR);
-            try {
-                System.out.println("open door...");
-                Thread.sleep(300);
-                System.out.println("open door end...");
-            } catch (Exception ex) {
-            }
-            elevator.setState(ElevatorState.CLOSEDOOR);
-            try {
-                System.out.println("close door ...");
-                Thread.sleep(300);
-                System.out.println("close door end...");
-            } catch (Exception ex) {
-            }
+            dest[cu]=up[cu]=false;
+            closeDoor(elevator);
         }
         if (nowdest == cu){
             boolean[] down = elevator.getDownClicks();
             if (down[cu]) {
                 elevator.setState(ElevatorState.MOVEDOWN);
-                elevator.setCurrentFloor(elevator.getCurrentFloor() - 1);
+                down[cu]=false;
             } else if (up[cu]) {
                 elevator.setState(ElevatorState.MOVEUP);
-                elevator.setCurrentFloor(elevator.getCurrentFloor() + 1);
+                up[cu]=false;
             }
             else elevator.setState(ElevatorState.IDLE);
         } else {
@@ -115,10 +106,10 @@ public class RunStrategy implements ElevatorRunStrategy{
         //如果dest中有这一层，则打开门        
         int cu=elevator.getCurrentFloor();
         boolean[] dest=elevator.getDestClicks();
-        boolean[] down=elevator.getUpClicks();
+        boolean[] down=elevator.getDownClicks();
         boolean[] up=elevator.getUpClicks();
         int de=-100;
-        for(int i=cu+1;i!=elevator.getDownClicks().length;++i){
+        for(int i=cu-1;i>=0;--i){
             if(dest[i]||down[i]){
                 de=i;
             }
@@ -127,8 +118,26 @@ public class RunStrategy implements ElevatorRunStrategy{
             nowdest=de;
         
         boolean open = false;
-        open = dest[cu] || down[cu];
+        open = dest[cu] || down[cu]||nowdest==cu;
         if (open) {
+            dest[cu]=down[cu]=false;
+            closeDoor(elevator);
+        }
+        if (nowdest == cu) {
+            if (down[cu]) {
+                elevator.setState(ElevatorState.MOVEDOWN);
+                down[cu]=false;
+            } else if (up[cu]) {
+                elevator.setState(ElevatorState.MOVEUP);
+                up[cu]=false;
+            }
+            else elevator.setState(ElevatorState.IDLE);
+        } else {
+            elevator.setState(ElevatorState.MOVEDOWN);
+            elevator.setCurrentFloor(elevator.getCurrentFloor() - 1);
+        }
+    }
+    private void closeDoor(Elevator elevator){
             elevator.setState(ElevatorState.OPENDOOR);
             try {
                 System.out.println("open door...");
@@ -142,20 +151,6 @@ public class RunStrategy implements ElevatorRunStrategy{
                 Thread.sleep(300);
                 System.out.println("close door end...");
             } catch (Exception ex) {
-            }
-        }
-        if (nowdest == cu) {
-            if (down[cu]) {
-                elevator.setState(ElevatorState.MOVEDOWN);
-                elevator.setCurrentFloor(elevator.getCurrentFloor() - 1);
-            } else if (up[cu]) {
-                elevator.setState(ElevatorState.MOVEUP);
-                elevator.setCurrentFloor(elevator.getCurrentFloor() + 1);
-            }
-            else elevator.setState(ElevatorState.IDLE);
-        } else {
-            elevator.setState(ElevatorState.MOVEDOWN);
-            elevator.setCurrentFloor(elevator.getCurrentFloor() - 1);
-        }
-    }
+            }        
+    }    
 }
