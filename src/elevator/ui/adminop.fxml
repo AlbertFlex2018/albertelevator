@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="elevator.ui.AdminOpUiController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#abb0bb" height="300.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="400.0" />
+      <Label layoutX="69.0" layoutY="36.0" text="operate" />
+      <ChoiceBox fx:id="adminoperate" layoutX="164.0" layoutY="31.0" prefWidth="150.0" />
+      <Label layoutX="105.0" layoutY="87.0" text="id" />
+      <TextField fx:id="adminidtextfield" layoutX="164.0" layoutY="82.0" prefHeight="30.0" prefWidth="150.0" promptText="admin id" />
+      <Label layoutX="56.0" layoutY="135.0" text="password" />
+      <TextField fx:id="passwordfield" layoutX="164.0" layoutY="130.0" prefHeight="30.0" prefWidth="150.0" promptText="password" />
+      <Label layoutX="85.0" layoutY="186.0" text="grunt" />
+      <ChoiceBox fx:id="gruntchoice" layoutX="164.0" layoutY="181.0" prefWidth="150.0" />
+      <Button layoutX="84.0" layoutY="238.0" mnemonicParsing="false" onAction="#reset" text="reset" />
+      <Button layoutX="258.0" layoutY="238.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="56.0" text="sure" />
+   </children>
+</AnchorPane>
