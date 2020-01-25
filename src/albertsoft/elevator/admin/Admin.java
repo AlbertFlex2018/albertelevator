@@ -1,4 +1,4 @@
-package elevator.admin;
+package albertsoft.elevator.admin;
 
 public class Admin {
     

@@ -1,4 +1,4 @@
-package elevator.admin;
+package albertsoft.elevator.admin;
 
 public enum AdminGrunt {    
     LOOK,//仅仅只是查看，授权给外部的检查机关

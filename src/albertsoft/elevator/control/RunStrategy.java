@@ -1,4 +1,4 @@
-package elevator.control;
+package albertsoft.elevator.control;
 
 /**
  *

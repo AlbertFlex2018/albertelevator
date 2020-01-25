@@ -1,4 +1,4 @@
-package elevator.admin;
+package albertsoft.elevator.admin;
 
 import java.util.LinkedList;
 import java.util.List;

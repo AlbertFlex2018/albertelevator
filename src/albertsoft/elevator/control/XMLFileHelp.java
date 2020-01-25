@@ -1,8 +1,8 @@
-package elevator.control;
+package albertsoft.elevator.control;
 
-import elevator.admin.Admin;
-import elevator.admin.AdminCenter;
-import elevator.admin.AdminGrunt;
+import albertsoft.elevator.admin.Admin;
+import albertsoft.elevator.admin.AdminCenter;
+import albertsoft.elevator.admin.AdminGrunt;
 import java.util.Iterator;
 import java.util.List;
 import org.dom4j.Element;

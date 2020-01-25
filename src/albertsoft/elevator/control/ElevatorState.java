@@ -1,4 +1,4 @@
-package elevator.control;
+package albertsoft.elevator.control;
 
 public enum ElevatorState {
     UNSETUP,//未启动
