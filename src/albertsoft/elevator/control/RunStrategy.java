@@ -138,19 +138,19 @@ public class RunStrategy implements ElevatorRunStrategy{
         }
     }
     private void closeDoor(Elevator elevator){
-            elevator.setState(ElevatorState.OPENDOOR);
-            try {
-                System.out.println("open door...");
-                Thread.sleep(300);
-                System.out.println("open door end...");
-            } catch (Exception ex) {
-            }
-            elevator.setState(ElevatorState.CLOSEDOOR);
-            try {
-                System.out.println("close door ...");
-                Thread.sleep(300);
-                System.out.println("close door end...");
-            } catch (Exception ex) {
-            }        
+        elevator.setState(ElevatorState.OPENDOOR);
+        try {
+            System.out.println("open door...");
+            Thread.sleep(300);
+            System.out.println("open door end...");
+        } catch (Exception ex) {
+        }
+        elevator.setState(ElevatorState.CLOSEDOOR);
+        try {
+            System.out.println("close door ...");
+            Thread.sleep(300);
+            System.out.println("close door end...");
+        } catch (Exception ex) {
+        }
     }    
 }
