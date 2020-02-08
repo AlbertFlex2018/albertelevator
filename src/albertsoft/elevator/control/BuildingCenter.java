@@ -11,7 +11,7 @@ public class BuildingCenter {
         return center;
     }
     private long bid=1000;
-    private List<Building> buildList;
+    private final List<Building> buildList;
     private BuildingCenter(){
         bid=1000;
         buildList=new LinkedList<>();
