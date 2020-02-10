@@ -24,15 +24,19 @@ public class RunClass {
         putInterface(interfaces,new BuildingCmd());
         putInterface(interfaces,new ElevatorCmd());
         putInterface(interfaces,new SystemCmd());
+
         Scanner scan=new Scanner(System.in);
         while(true){
             String cmd=scan.nextLine();
             String[] cmds=cmd.split(" ");
+
             CmdInterface in=interfaces.get(cmds[0]);
+
             if(in==null){
                 System.err.println("no interface for cmd:"+cmd);
                 continue;
             }
+
             System.out.println(in.cmd(cmds));
         }
     }
