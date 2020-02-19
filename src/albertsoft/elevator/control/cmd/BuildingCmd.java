@@ -38,7 +38,7 @@ public class BuildingCmd implements CmdInterface{
             default:
                 break;
         }
-        return "";
+        return "building end.";
     }    
     @Override
     public String getName() {
